@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>obj模型加载</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body{
+				text-align: center;
+			}
+			#space{
+				width: 75%;
+				background-color: white;
+				border: aliceblue 1px;
+				margin:0 auto;
+			}
+
+		</style>
+	</head>
+
+	<body style="background:#EEEED1">
+		
+
+		<script src="js/three.js"></script>
+        <script src="js/TrackballControls.js"></script>
+
+		<script src="js/DDSLoader.js"></script>
+		<script src="js/MTLLoader.js"></script>
+		<script src="js/OBJLoader.js"></script>
+		
+	<header style="text-align: center;margin: 0 auto" align="center">
+    <div class="section-title">
+		<h1 class="wow fadeInUp"  >用牛顿环测量薄透镜的曲率半径</h1>
+	</div>
+	</header>
+	<div id="space"></div>
+		   
+
+
+		
+
+		<script>
+
+			//var container, stats;
+			//var controls;
+
+			//var windowHalfX = window.innerWidth / 2;
+			//var windowHalfY = window.innerHeight / 2;
+
+            var dividingRule =  null;   //刻度指针
+
+			init();
+
+			/**
+			* 初始化模型
+			*/
+			function initObject() 
+	{
+		//加载过程回调函数
+		
+		
+		
+		
+		var onProgress = function(xhr) {
+			if(xhr.lengthComputable) {
+				var percentComplete = xhr.loaded / xhr.total * 100;
+				console.log(Math.round(percentComplete, 2) + '% downloaded');
+			}
+		};
+
+		//加载出错回调函数
+		var onError = function(xhr) {};
+
+		THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+       
+
+		// model
+		var mtlLoader = new THREE.MTLLoader();
+		//设置材质路径
+		mtlLoader.setBaseUrl( 'obj/底座固定不圆滑/');
+		mtlLoader.setPath('obj/底座固定不圆滑/');
+		mtlLoader.load('底座固定不圆滑.mtl', function(materials) {
+        materials.preload();
+			
+		var objLoader = new THREE.OBJLoader();
+		objLoader.setMaterials(materials);
+		//设置要加载的obj文件的路径
+		objLoader.setPath('obj/底座固定不圆滑/');
+		//加载obj文件
+		objLoader.load('底座固定不圆滑.obj', function(object) {
+				//这里设置我们的素材相对于原来的大小以及旋转缩放等
+				//object.rotation.x = -Math.PI/2;
+				//object.rotation.z = -Math.PI/2;
+
+				object.position.y = -50;
+				object.position.x = -100;
+
+				scene.add(object);
+
+			}, onProgress, onError);
+
+		});
+
+		var onProgress = function(xhr) {
+			if(xhr.lengthComputable) {
+				var percentComplete = xhr.loaded / xhr.total * 100;
+				console.log(Math.round(percentComplete, 2) + '% downloaded');
+			}
+		};
+
+		//加载出错回调函数
+		var onError = function(xhr) {};
+
+		THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+		// model
+		var mtlLoader = new THREE.MTLLoader();
+		//设置材质路径
+		mtlLoader.setPath('obj/物镜+目镜/');
+		mtlLoader.load('物镜+目镜.mtl', function(materials) {
+
+			materials.preload();
+			var objLoader = new THREE.OBJLoader();
+			objLoader.setMaterials(materials);
+			//设置要加载的obj文件的路径
+			objLoader.setPath('obj/物镜+目镜/');
+			//加载obj文件
+			objLoader.load('物镜+目镜.obj', function(object) {
+				//这里设置我们的素材相对于原来的大小以及旋转缩放等
+				object.rotation.x = -Math.PI / 2;
+				//object.rotation.z = -Math.PI/2;
+
+				object.position.y = -50;
+				object.position.x = -100;
+
+				scene.add(object);
+
+			}, onProgress, onError);
+
+		});
+
+		var onProgress = function(xhr) {
+			if(xhr.lengthComputable) {
+				var percentComplete = xhr.loaded / xhr.total * 100;
+				console.log(Math.round(percentComplete, 2) + '% downloaded');
+			}
+		};
+
+		//加载出错回调函数
+		var onError = function(xhr) {};
+
+		THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+		// model
+		var mtlLoader = new THREE.MTLLoader();
+		//设置材质路径
+		mtlLoader.setPath('obj/底座平面镜/');
+		mtlLoader.load('底座平面镜.mtl', function(materials) {
+
+			materials.preload();
+			var objLoader = new THREE.OBJLoader();
+			objLoader.setMaterials(materials);
+			//设置要加载的obj文件的路径
+			objLoader.setPath('obj/底座平面镜/');
+			//加载obj文件
+			objLoader.load('底座平面镜.obj', function(object) {
+				//这里设置我们的素材相对于原来的大小以及旋转缩放等
+				object.rotation.x = -Math.PI / 2;
+				//object.rotation.z = -Math.PI/2;
+
+				object.position.y = -50;
+				object.position.x = -100;
+
+				scene.add(object);
+
+			}, onProgress, onError);
+
+		});
+
+		var onProgress = function(xhr) {
+			if(xhr.lengthComputable) {
+				var percentComplete = xhr.loaded / xhr.total * 100;
+				console.log(Math.round(percentComplete, 2) + '% downloaded');
+			}
+		};
+
+		//加载出错回调函数
+		var onError = function(xhr) {};
+
+		THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+		// model
+		var mtlLoader = new THREE.MTLLoader();
+		//设置材质路径
+		mtlLoader.setPath('obj/反光镜/');
+		mtlLoader.load('反光镜.mtl', function(materials) {
+
+			materials.preload();
+			var objLoader = new THREE.OBJLoader();
+			objLoader.setMaterials(materials);
+			//设置要加载的obj文件的路径
+			objLoader.setPath('obj/反光镜/');
+			//加载obj文件
+			objLoader.load('反光镜.obj', function(object) {
+				//这里设置我们的素材相对于原来的大小以及旋转缩放等
+				object.rotation.x = -Math.PI / 2;
+				//object.rotation.z = -Math.PI/2;
+
+				object.position.y = -50;
+				object.position.x = -100;
+
+				scene.add(object);
+
+			}, onProgress, onError);
+
+		});
+
+		var onProgress = function(xhr) {
+			if(xhr.lengthComputable) {
+				var percentComplete = xhr.loaded / xhr.total * 100;
+				console.log(Math.round(percentComplete, 2) + '% downloaded');
+			}
+		};
+
+		//加载出错回调函数
+		var onError = function(xhr) {};
+
+		THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+		// model
+		var mtlLoader = new THREE.MTLLoader();
+		//设置材质路径
+		mtlLoader.setPath('obj/固定旋钮/');
+		mtlLoader.load('固定旋钮.mtl', function(materials) {
+
+			materials.preload();
+			var objLoader = new THREE.OBJLoader();
+			objLoader.setMaterials(materials);
+			//设置要加载的obj文件的路径
+			objLoader.setPath('obj/固定旋钮/');
+			//加载obj文件
+			objLoader.load('固定旋钮.obj', function(object) {
+				//这里设置我们的素材相对于原来的大小以及旋转缩放等
+				object.rotation.x = -Math.PI / 2;
+				//object.rotation.z = -Math.PI/2;
+
+			    object.position.y = -50;
+				object.position.x = -100;
+
+				scene.add(object);
+
+			}, onProgress, onError);
+
+		});
+
+		var onProgress = function(xhr) {
+			if(xhr.lengthComputable) {
+				var percentComplete = xhr.loaded / xhr.total * 100;
+				console.log(Math.round(percentComplete, 2) + '% downloaded');
+			}
+		};
+
+		//加载出错回调函数
+		var onError = function(xhr) {};
+
+		THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+		// model
+		var mtlLoader = new THREE.MTLLoader();
+		//设置材质路径
+		mtlLoader.setPath('obj/中大旋钮/');
+		mtlLoader.load('中大旋钮.mtl', function(materials) {
+
+			materials.preload();
+			var objLoader = new THREE.OBJLoader();
+			objLoader.setMaterials(materials);
+			//设置要加载的obj文件的路径
+			objLoader.setPath('obj/中大旋钮/');
+			//加载obj文件
+			objLoader.load('中大旋钮.obj', function(object) {
+				//这里设置我们的素材相对于原来的大小以及旋转缩放等
+				object.rotation.x = -Math.PI / 2;
+				//object.rotation.z = -Math.PI/2;
+
+				object.position.y = -50;
+				object.position.x = -100;
+
+				scene.add(object);
+
+			}, onProgress, onError);
+
+		});
+
+		var onProgress = function(xhr) {
+			if(xhr.lengthComputable) {
+				var percentComplete = xhr.loaded / xhr.total * 100;
+				console.log(Math.round(percentComplete, 2) + '% downloaded');
+			}
+		};
+
+		//加载出错回调函数
+		var onError = function(xhr) {};
+
+		THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+		// model
+		var mtlLoader = new THREE.MTLLoader();
+		//设置材质路径
+		mtlLoader.setPath('obj/移动测量旋钮/');
+		mtlLoader.load('移动测量旋钮.mtl', function(materials) {
+
+			materials.preload();
+			var objLoader = new THREE.OBJLoader();
+			objLoader.setMaterials(materials);
+			//设置要加载的obj文件的路径
+			objLoader.setPath('obj/移动测量旋钮/');
+			//加载obj文件
+			objLoader.load('移动测量旋钮.obj', function(object) {
+				//这里设置我们的素材相对于原来的大小以及旋转缩放等
+				//object.rotation.x = -Math.PI / 2;
+				//object.rotation.z = -Math.PI/2;
+
+				object.position.y = -50;
+				object.position.x = -100;
+
+				scene.add(object);
+
+			}, onProgress, onError);
+
+		});
+
+		var onProgress = function(xhr) {
+			if(xhr.lengthComputable) {
+				var percentComplete = xhr.loaded / xhr.total * 100;
+				console.log(Math.round(percentComplete, 2) + '% downloaded');
+			}
+		};
+
+		//加载出错回调函数
+		var onError = function(xhr) {};
+
+		THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+		// model
+		var mtlLoader = new THREE.MTLLoader();
+		//设置材质路径
+		mtlLoader.setBaseUrl( 'obj/刻度指针/');
+		mtlLoader.setPath('obj/刻度指针/');
+		mtlLoader.load('刻度指针.mtl', function(materials) {
+
+			materials.preload();
+			var objLoader = new THREE.OBJLoader();
+			objLoader.setMaterials(materials);
+			//设置要加载的obj文件的路径
+			objLoader.setPath('obj/刻度指针/');
+			//加载obj文件
+			objLoader.load('刻度指针.obj', function(object) {
+				//这里设置我们的素材相对于原来的大小以及旋转缩放等
+				//object.rotation.x = -Math.PI/2;
+				//object.rotation.z = -Math.PI/2;
+
+				object.position.y = -50;
+				object.position.x = -100;
+
+				scene.add(object);
+				dividingRule = object;
+			}, onProgress, onError);
+
+		});
+
+		var onProgress = function(xhr) {
+			if(xhr.lengthComputable) {
+				var percentComplete = xhr.loaded / xhr.total * 100;
+				console.log(Math.round(percentComplete, 2) + '% downloaded');
+			}
+		};
+
+		//加载出错回调函数
+		var onError = function(xhr) {};
+
+		THREE.Loader.Handlers.add(/\.dds$/i, new THREE.DDSLoader());
+
+		// model
+		var mtlLoader = new THREE.MTLLoader();
+		//设置材质路径
+		mtlLoader.setPath('obj/轴/');
+		mtlLoader.load('轴.mtl', function(materials) {
+
+			materials.preload();
+			var objLoader = new THREE.OBJLoader();
+			objLoader.setMaterials(materials);
+			//设置要加载的obj文件的路径
+			objLoader.setPath('obj/轴/');
+			//加载obj文件
+			objLoader.load('轴.obj', function(object) {
+				//这里设置我们的素材相对于原来的大小以及旋转缩放等
+				//object.rotation.x = -Math.PI/2;
+				//object.rotation.z = -Math.PI/2;
+
+				object.position.y = -50;
+				object.position.x = -100;
+
+				scene.add(object);
+
+			}, onProgress, onError);
+
+		});
+
+	}
+			
+			
+			
+			
+			function init() {
+				//使用createElement创建一个div，就是整个页面
+				container = document.getElementById("space");
+				//添加子节点
+				document.body.appendChild( container );
+				// 透视相机
+				camera = new THREE.PerspectiveCamera( 100, window.innerWidth / window.innerHeight, 1, 2000 );
+				camera.position.x = -250;
+		        camera.position.y = 80;
+		        camera.position.z = 300;
+				
+				// 场景
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color(0xffffff);
+				scene.position.z=1;
+				
+				//环境光
+				var ambientLight = new THREE.AmbientLight( 0xffffff, 1 );
+				scene.add( ambientLight );
+                scene.add( camera );
+                
+				//电光源
+				var pointLight = new THREE.PointLight(0xAAAAAA); 
+				pointLight.position.set(-200, 200, 200); 
+				pointLight.castShadow = true; 
+				camera.add(pointLight);
+				
+				
+				//声明渲染器r
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( 800, 500);
+				
+				//在页面中添加canvas
+				container.appendChild( renderer.domElement );
+				// 创建控制器
+				controls = new THREE.TrackballControls( camera, renderer.domElement );
+				
+				initObject();
+
+				   // //存放有所有需要改变的属性的对象
+                 var changeData = new function () {
+                 this.positionz = 25;
+                 };
+
+                 //创建dat.GUI，传递并设置属性
+                var gui = new dat.GUI();
+                gui.add(changeData, 'positionz', 0, 50).name("谷轮圈数").onChange(transformFun);
+
+				//监听窗口缩放函数
+				window.addEventListener( 'resize', onWindowResize, false );
+				render();
+
+			}
+
+			function transformFun(val){
+				dividingRule.position.z = val;
+			}
+
+			function onWindowResize() {
+
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+
+			function render() {
+				requestAnimationFrame( render );
+				//渲染场景
+				renderer.render( scene, camera );
+				//更新控制器
+				controls.update();
+
+			}
+			
+			
+
+		</script>
+		
+		
+
+	</body>
+</html>
